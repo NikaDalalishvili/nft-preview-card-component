@@ -32,18 +32,21 @@ main .preview-card {
   flex-direction: column;
   gap: 24px;
 }
-main .preview-card picture {
-  display: flex;
-  position: relative;
-}
-main .preview-card picture .product-img {
-  max-inline-size: 100%;
+main .preview-card .img-container {
   border-radius: 8px;
-  object-fit: cover;
-  background-color: #00fff7;
+  height: max-content;
+  overflow: hidden;
   position: relative;
 }
-main .preview-card picture .hover {
+main .preview-card .img-container picture {
+  display: flex;
+}
+main .preview-card .img-container picture .product-img {
+  max-inline-size: 100%;
+  object-fit: cover;
+  position: relative;
+}
+main .preview-card .img-container .img-overlay {
   display: none;
 }
 main .preview-card .text-content {
@@ -166,11 +169,11 @@ footer .attribution p a {
   }
 }
 @media (hover: hover) and (pointer: fine) {
-  main .preview-card picture .hover {
-    display: block;
+  main .preview-card .img-container .img-overlay {
     border-radius: 8px;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 255, 247, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -184,15 +187,10 @@ footer .attribution p a {
     transition: 0.5s ease-in-out;
     cursor: pointer;
   }
-  main .preview-card picture .hover .hover-bg {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 255, 247, 0.5);
-  }
-  main .preview-card picture .hover .hover-img {
+  main .preview-card .img-container .img-overlay .overlay-img {
     position: absolute;
   }
-  main .preview-card picture .hover:hover {
+  main .preview-card .img-container .img-overlay:hover {
     opacity: 1;
   }
   main .preview-card .text-content .about-card .title:hover {

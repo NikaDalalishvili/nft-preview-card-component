@@ -46,22 +46,29 @@ main {
         flex-direction: column;
         gap: 24px;
 
-        picture {
-            display: flex;
+        .img-container {
+            border-radius: 8px;
+            height: max-content;
+            overflow: hidden;
+
             position: relative;
 
-            .product-img {
-                max-inline-size: 100%;
-                border-radius: 8px;
-                object-fit: cover;
-                background-color: #00fff7;
-                position: relative;
+            picture {
+                display: flex;
+
+                .product-img {
+                    max-inline-size: 100%;
+                    object-fit: cover;
+                    position: relative;
+                }
             }
 
-            .hover {
+            .img-overlay {
                 display: none;
             }
+
         }
+
 
         .text-content {
             display: flex;
@@ -178,24 +185,25 @@ main {
 
 footer {
     padding: 15px 0;
+
     .attribution {
         padding: 10px 12px;
         width: 100%;
         background-color: $very-dark-blue-card;
-    
+
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
         column-gap: 5px;
-    
+
         p {
             font-family: 'Outfit';
             font-size: 16px;
             font-weight: 700;
             color: $soft-blue;
             text-align: center;
-    
+
             a {
                 font-size: 18px;
                 text-decoration: none;
@@ -207,7 +215,7 @@ footer {
 }
 
 @media only screen and (min-width: 648px) {
-    footer{ 
+    footer {
         .attribution {
             border-radius: 0 10px 10px 0;
             width: max-content;
@@ -218,15 +226,17 @@ footer {
 @media (hover: hover) and (pointer: fine) {
     main {
         .preview-card {
-            picture {
-                .hover {
-                    display: block;
+            .img-container {
+                .img-overlay {
                     border-radius: 8px;
                     width: 100%;
                     height: 100%;
+                    background-color: rgba(0, 255, 247, 0.5);
+
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -239,13 +249,7 @@ footer {
 
                     cursor: pointer;
 
-                    .hover-bg {
-                        width: 100%;
-                        height: 100%;
-                        background-color: rgba(0, 255, 247, 0.5);
-                    }
-
-                    .hover-img {
+                    .overlay-img {
                         position: absolute;
                     }
 
@@ -285,6 +289,7 @@ footer {
             p {
                 a {
                     transition: .5s ease-in-out;
+
                     &:hover {
                         color: $cyan;
                     }
